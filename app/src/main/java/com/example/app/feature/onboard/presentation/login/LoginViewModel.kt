@@ -124,7 +124,7 @@ class LoginViewModel @Inject constructor(
         loginJob = viewModelScope.launch {
             repository.loginUser(loginRequest).collectLatest { result ->
                 when (result) {
-                    is com.example.app.commons.util.Result.Loading -> setLoading(LoadState.Loading(), LoadType.ACTION)
+                    is Result.Loading -> setLoading(LoadState.Loading(), LoadType.ACTION)
                     is Result.Error -> {
                         when (result.exception) {
                             is ApiException -> {
